@@ -1,0 +1,30 @@
+<div class="container px-20 mt-14 mb-20">
+    <p class="font-semibold text-2xl my-3 ml-3">Usuarios</p>
+    <div class="flex"> 
+      <div> 
+        <button class="crear">
+          <img src="../../../../assets/plus-symbol-button.png" alt="">
+        </button>
+      </div>
+      <div #swiperContainer class="swiper-container">
+        <div class="swiper-wrapper">
+          <ng-container *ngFor="let m of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]">
+            <div class="swiper-slide relative p-2">
+              <a href=""><img width="40" src="../../../../assets/user.png" alt="" /></a>
+              <div class="desc p-2">
+                <span class="flex flex-wrap font-bold">Mauricio</span>
+                <p class="text-xs my-3 mb-6">Maurogmail.com</p>
+                <div class="py-3 absolute w-[90%] bottom-1">
+                  <p class="text-xs flex justify-between items-center">
+                    <span class="text-green-500">id: 1</span>
+                    <i class="fa fa-2x fa-chevron-circle-down" aria-hidden="true"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+</div>
