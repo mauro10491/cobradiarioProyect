@@ -1,0 +1,54 @@
+<main class="form">
+    <div class=" w-full max-w-xs">
+      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            Username
+          </label>
+          <input [formControl]="userName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="user?.username">
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+              email
+          </label>
+          <input [formControl]="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" [value]="user?.email">
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+              Cellphone
+          </label>
+          <input [formControl]="cellphone"  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="user?.cellPhone">
+          <div *ngIf="cellphone.errors?.['pattern']" class="mt-2 mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">El numero debe ser de 10 digitos</span>
+          </div>
+           <label class="block text-gray-700 text-sm font-bold mb-2">
+          Password
+        </label>
+        <input [formControl]="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="user?.password">
+        <div *ngIf="password.errors?.['pattern']" class="mt-2 mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <span class="block sm:inline">La contraseña es obligatoria</span>
+          <span  class="block sm:inline">La contraseña debe ser al menos de 8 digitos</span>
+          <span  class="block sm:inline">La contraseña debe contener al menos una letra minúscula, una letra mayúscula, un número y un carácter especial.</span>
+        </div>
+        </div>
+        <div class="mb-6">
+          <div class="relative">
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              Rol de usuario
+            </label>
+            <p>{{ user?.id }}</p>
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <button (click)="updateUser()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+            Actualizar Usuario
+          </button>
+          <button [routerLink]="['/']" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+            Cerrar
+          </button>
+        </div>
+        <button (click)="deleteUser()" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+          Eliminar Usuario
+        </button>
+        <button (click)="verCreditos()" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+          Ver Creditos
+        </button>
+      </form>
+    </div>
+  </main>

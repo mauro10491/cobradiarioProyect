@@ -1,29 +1,32 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import Swiper from 'swiper';
-import { User } from '../../models/user.model';
-import { UserService } from '../../services/user.service';
+import { ClientServiceService } from '../../services/client-service.service';
+import { Client } from '../../models/client.model';
 
 @Component({
-  selector: 'app-user-carousel',
+  selector: 'app-client-carousel',
   standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './user-carousel.component.html',
-  styleUrl: './user-carousel.component.css'
+  imports: [RouterModule, CommonModule],
+  templateUrl: './client-carousel.component.html',
+  styleUrl: './client-carousel.component.css'
 })
-export class UserCarouselComponent {
+export class ClientCarouselComponent {
 
-  constructor(private router: Router, private userService: UserService){}
+  constructor(private clientService: ClientServiceService, private router: Router){
 
-  users: User[] = [];
+  }
+
+  clients: Client[] = [];
 
   @ViewChild('swiperContainer') swiperContainer!: ElementRef
 
   ngAfterViewInit(): void {
     this.initSwiper();
-    this.getUsers(); 
+    this.getClients();
   }
+
 
   private initSwiper(){
     return new Swiper(this.swiperContainer.nativeElement, {
@@ -66,14 +69,16 @@ export class UserCarouselComponent {
     })
   }
 
-  getUsers(){
-    return this.userService.getUser().subscribe((data: User[]) => {
-      this.users = data;
+  getClients(){
+    return this.clientService.getClient().subscribe((data: Client[]) => {
+      this.clients = data;
+      console.log(this.clients,  'este es ')
     });
   }
 
-  openUserDetails(Id: number | undefined | null) {
-    this.router.navigate(['/user', Id]);
-    console.log(Id)
+  
+  openClientDetails(Id: string | null | undefined){
+    this.router.navigate(['/client', Id]);
   }
+
 }

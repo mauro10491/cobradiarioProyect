@@ -1,0 +1,91 @@
+<main class="form">
+    <div class=" w-full max-w-xs">
+      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            Name
+          </label>
+          <input [formControl]="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="client?.name">
+          <div [hidden]="name.valid || name.pristine" class="mt-2 mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">El campo Name es obligatorio</span>
+          </div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            Document Id
+          </label>
+          <input [formControl]="documentId" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="client?.documentId">
+          <div [hidden]="documentId.valid || documentId.pristine" class="mt-2 mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">El campo es obligatorio</span>
+          </div>
+          <label class="block text-gray-700 text-s font-bold mb-2">Pais</label>
+          <select [formControl]="pais" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <option *ngFor="let p of countries">{{ p }}</option>
+          </select> 
+          <div *ngIf="pais.invalid && (pais.dirty || pais.touched)" class="mt-2 mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">El campo es obligatorio</span>
+          </div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            Route Id
+          </label>
+          <input [formControl]="routeId" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="client?.route?.id">
+          <div [hidden]="routeId.valid || routeId.pristine" class="mt-2 mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">El campo de UserName es obligatorio</span>
+          </div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            Direccion
+          </label>
+          <input [formControl]="direccion" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="client?.direccion">
+          <div [hidden]="direccion.valid || direccion.pristine" class="mt-2 mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">El campo de UserName es obligatorio</span>
+          </div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            Longitud
+          </label>
+          <input [formControl]="longitud" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="client?.longitud">
+          <div [hidden]="longitud.valid || longitud.pristine" class="mt-2 mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">El campo de UserName es obligatorio</span>
+          </div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            Latitud
+          </label>
+          <input [formControl]="latitud" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="client?.latitud">
+          <div [hidden]="latitud.valid || latitud.pristine" class="mt-2 mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">El campo de UserName es obligatorio</span>
+          </div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            Phone 1 
+          </label>
+          <input [formControl]="phone1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="client?.phone1">
+          <div [hidden]="phone1.valid || phone1.pristine" class="mt-2 mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">El numero de telefono es requerido</span>
+            <span class="block sm:inline">El numero debe ser de 10 digitos</span>
+          </div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            Phone 2
+          </label>
+          <input [formControl]="phone2" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="client?.phone2">
+          <div [hidden]="phone2.valid || phone2.pristine" class="mt-2 mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">El numero de telefono es requerido</span>
+            <span class="block sm:inline">El numero debe ser de 10 digitos</span>
+          </div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            Coments
+          </label>
+          <input [formControl]="comments" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" [value]="client?.comments">
+        </div>
+        <div class="flex items-center justify-between">
+          <button (click)="updateClient()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+            Actualizar Cliente
+          </button>
+          <button [routerLink]="['/']" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+            Cerrar
+          </button>
+        </div>
+        <button (click)="deleteClient()" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+          Eliminar Cliente
+        </button>
+        <button (click)="verCreditos()" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+          Ver Creditos
+        </button>
+      </form>
+    </div>
+  </main>
